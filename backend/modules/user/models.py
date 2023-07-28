@@ -8,13 +8,11 @@ from .managers import CustomUserManager
 
 class User(AbstractUser):
     """Represents user class model"""
+
     id = models.CharField(
-        max_length=100,
-        unique=True,
-        default=uuid.uuid4,
-        primary_key=True
+        max_length=100, unique=True, default=uuid.uuid4, primary_key=True
     )
-    
+
     roles = models.ManyToManyField(Role, blank=True)
     org_id = models.IntegerField(null=True, blank=True)
     phone = models.CharField(max_length=15, null=True, blank=True)
@@ -23,14 +21,14 @@ class User(AbstractUser):
     updated_at = models.DateTimeField(auto_now=True)
     created_by = models.CharField(max_length=50, null=True, blank=True)
 
-    #objects = CustomUserManager()
-    
+    # objects = CustomUserManager()
+
     class Meta:
-        ordering = ['-id']
+        ordering = ["-id"]
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name}'
-    
+        return f"{self.first_name} {self.last_name}"
+
     @property
     def name(self):
-        return f'{self.first_name} {self.last_name}'
+        return f"{self.first_name} {self.last_name}"

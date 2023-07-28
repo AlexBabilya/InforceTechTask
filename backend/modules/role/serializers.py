@@ -9,10 +9,10 @@ class RoleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Role
-        fields = ['id', 'name']
+        fields = ["id", "name"]
 
 
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Group
-        fields = ['name']
+        fields = ["name"]

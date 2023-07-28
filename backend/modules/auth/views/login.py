@@ -22,10 +22,11 @@ class UserLoginAPIView(APIView):
                 token = jwt_encode_handler(payload)
 
                 user.save()
-                roles = [{"id": role.id, "name": role.name}
-                         for role in user.roles.all()]
+                roles = [
+                    {"id": role.id, "name": role.name} for role in user.roles.all()
+                ]
                 fullname = f"{user.first_name} {user.last_name}"
-                
+
                 res = {
                     "msg": "Login success",
                     "success": True,
@@ -34,24 +35,20 @@ class UserLoginAPIView(APIView):
                         "username": user.username,
                         "id": user.id,
                         "token": token,
-                        "roles": roles
-                    }
+                        "roles": roles,
+                    },
                 }
-                
+
                 return Response(data=res, status=status.HTTP_200_OK)
 
             else:
                 res = {
                     "msg": "Invalid login credentials",
                     "data": None,
-                    "success": False
+                    "success": False,
                 }
                 return Response(data=res, status=status.HTTP_400_BAD_REQUEST)
-            
+
         except Exception as e:
-            res = {
-                "msg": str(e), 
-                "success": False, 
-                "data": None
-            }
-            return Response(data=res, status=status.HTTP_401_UNAUTHORIZED) 
+            res = {"msg": str(e), "success": False, "data": None}
+            return Response(data=res, status=status.HTTP_401_UNAUTHORIZED)

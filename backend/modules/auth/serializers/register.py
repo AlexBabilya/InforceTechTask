@@ -8,6 +8,7 @@ class UserRegisterSerializer(UserSerializer):
     """
     Registration serializer for requests and user creation
     """
+
     password = serializers.CharField(
         max_length=128, min_length=8, write_only=True, required=True
     )

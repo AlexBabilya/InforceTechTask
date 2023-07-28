@@ -2,6 +2,6 @@ from django.apps import AppConfig
 
 
 class VoteConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'modules.vote'
-    label = 'modules_vote'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "modules.vote"
+    label = "modules_vote"

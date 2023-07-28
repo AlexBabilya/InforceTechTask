@@ -2,6 +2,6 @@ from django.apps import AppConfig
 
 
 class RoleConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'modules.role'
-    label = 'modules_role'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "modules.role"
+    label = "modules_role"

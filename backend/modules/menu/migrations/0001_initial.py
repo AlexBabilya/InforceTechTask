@@ -5,27 +5,42 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('modules_restaurant', '0001_initial'),
+        ("modules_restaurant", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Menu',
+            name="Menu",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('file', models.FileField(upload_to='menus/')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('uploaded_by', models.CharField(blank=True, max_length=50, null=True)),
-                ('votes', models.IntegerField(default=0)),
-                ('restaurant', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='modules_restaurant.restaurant')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("file", models.FileField(upload_to="menus/")),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("uploaded_by", models.CharField(blank=True, max_length=50, null=True)),
+                ("votes", models.IntegerField(default=0)),
+                (
+                    "restaurant",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="modules_restaurant.restaurant",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-id'],
+                "ordering": ["-id"],
             },
         ),
     ]
