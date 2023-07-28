@@ -14,8 +14,8 @@ class CustomUserManager(BaseUserManager):
         if email is None:
             raise TypeError("Users must have an email.")
         if password is None:
-            raise TypeError("User must have an email.")
-        
+            raise TypeError("User must have an password.")
+        print(kwargs)
         role_group, _ = Role.objects.get_or_create(name=kwargs.get('roles')[0]["name"])
 
         user = self.model(
@@ -26,6 +26,7 @@ class CustomUserManager(BaseUserManager):
             is_active=True,
             phone=kwargs.get('phone'),
             identification_no=kwargs.get('identification_no'),
+            
         )
         
         user.set_password(password)

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'modules.auth',
     'modules.user',
     'modules.role',
+    'modules.employee',
 ]
 
 MIDDLEWARE = [
