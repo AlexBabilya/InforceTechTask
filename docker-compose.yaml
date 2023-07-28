@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: inforce_api
+    build: .
+    restart: always
+    env_file: .env
+    command: >
+      sh -c "python manage.py migrate --no-input && gunicorn CoreRoot.wsgi:application --bind 0.0.0.0:8000"
+    volumes:
+     - .:/app
+     - uploads_volume:/app/uploads
+    depends_on:
+     - db
+
+  db:
+    container_name: inforce_db
+    image: postgres:14.3-alpine
+    env_file: .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+      
+volumes:
+  uploads_volume:
+  postgres_data:

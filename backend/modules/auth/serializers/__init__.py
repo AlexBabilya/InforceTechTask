@@ -1,2 +1,2 @@
-from .login import LoginSerializer
-from .register import RegisterSerializer
+from .login import UserLoginSerializer
+from .register import UserRegisterSerializer
