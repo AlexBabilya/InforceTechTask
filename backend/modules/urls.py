@@ -8,5 +8,5 @@ urlpatterns = [
     path('menu/', include('modules.menu.urls'), name='menu'),
     path('vote/', include('modules.vote.urls'), name='vote'),
     path('roles/', RoleListAPIView.as_view(), name="roles"),
-    path('employees/', CreateEmployeeAPIView.as_view(), name="employees"),
+    path('employee/', CreateEmployeeAPIView.as_view(), name="employees"),
 ]
