@@ -10,8 +10,9 @@ from .models import Restaurant
 
 class RestaurantCreateAPIView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
-
+    
     def post(self, request, format=None):
+        print(11111)
         req = request.data
         user = {
             'created_by': jwt_decode_handler(request.auth).get('username')

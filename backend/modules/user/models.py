@@ -6,7 +6,6 @@ from modules.role.models import Role
 from .managers import CustomUserManager
 
 
-
 class User(AbstractUser):
     """Represents user class model"""
     id = models.CharField(
@@ -24,6 +23,8 @@ class User(AbstractUser):
     updated_at = models.DateTimeField(auto_now=True)
     created_by = models.CharField(max_length=50, null=True, blank=True)
 
+    #objects = CustomUserManager()
+    
     class Meta:
         ordering = ['-id']
 

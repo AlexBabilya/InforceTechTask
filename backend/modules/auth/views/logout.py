@@ -7,7 +7,7 @@ from modules.user.models import User
 from ..handlers import jwt_decode_handler, jwt_encode_handler, jwt_payload_handler
 
 class UserLogoutView(APIView):
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
 
     def get(self, request):
         try:

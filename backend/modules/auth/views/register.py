@@ -34,8 +34,8 @@ class UserRegisterAPIView(APIView):
                 new_user.roles.add(role_group)
                 #new_user.groups.add(user_group)
 
-                password = User.objects.make_random_password(length=10)
-                new_user.set_password(password)
+                
+                new_user.set_password(req.get('password'))
                 new_user.save()
 
                 user = UserSerializer(new_user)

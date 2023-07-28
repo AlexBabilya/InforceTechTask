@@ -54,4 +54,4 @@ class UserLoginAPIView(APIView):
                 "success": False, 
                 "data": None
             }
-            return Response(data=res, status=status.HTTP_200_OK)
+            return Response(data=res, status=status.HTTP_401_UNAUTHORIZED) 

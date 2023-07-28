@@ -4,10 +4,12 @@ services:
   api:
     container_name: inforce_api
     build: .
-    restart: always
+    restart: no
     env_file: backend/.env
     command: >
-      sh -c "python backend/manage.py migrate --no-input && python backend/manage.py runserver"
+      sh -c "python backend/manage.py runserver 0.0.0.0:8000 "
+    ports:
+      - 8000:8000
     volumes:
      - .:/app
      - uploads_volume:/app/uploads

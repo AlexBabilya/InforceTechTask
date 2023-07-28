@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import datetime
 import os 
-from dotenv import load_dotenv
+
 from pathlib import Path
 
 CURRENT_DATE = datetime.datetime.now()
@@ -20,8 +20,7 @@ CURRENT_DATE = datetime.datetime.now()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-load_dotenv()
-ENV = os.environ.get("ENV")
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -32,7 +31,7 @@ SECRET_KEY = 'django-insecure-tyy^_f6rrdr&-dzzr&k=3^fx*(z1c39njv0m9lr_5s!smvbrz$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default="*").split(",")
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -51,16 +50,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'cloudinary_storage',
-    'cloudinary',
-    'rest_framework_simplejwt',
     
-    'modules.auth',
-    'modules.user',
-    'modules.role',
-    'modules.employee',
-    'modules.restaurant',
-    'modules.menu',
-    'modules.vote',
+    'modules.auth.apps.AuthConfig',
+    'modules.user.apps.UserConfig',
+    'modules.role.apps.RoleConfig',
+    'modules.employee.apps.EmployeeConfig',
+    'modules.restaurant.apps.RestaurantConfig',
+    'modules.menu.apps.MenuConfig',
+    'modules.vote.apps.VoteConfig',
 ]
 
 MIDDLEWARE = [
@@ -160,7 +157,7 @@ REST_FRAMEWORK = {
     ],
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
 
     ),
 
@@ -186,11 +183,9 @@ JWT_AUTH = {
     'JWT_DECODE_HANDLER': 'modules.auth.handlers.jwt_decode_handler',
 
 
-    'JWT_PAYLOAD_HANDLER':
-    'modules.auth.handlers.jwt_payload_handler',
+    'JWT_PAYLOAD_HANDLER': 'modules.auth.handlers.jwt_payload_handler',
 
-    'JWT_PAYLOAD_GET_USER_ID_HANDLER':
-    'rest_framework_jwt.utils.jwt_get_user_id_from_payload_handler',
+    'JWT_PAYLOAD_GET_USER_ID_HANDLER': 'rest_framework_jwt.utils.jwt_get_user_id_from_payload_handler',
 
     'JWT_RESPONSE_PAYLOAD_HANDLER':'modules.auth.handlers.jwt_response_payload_handler',
 
