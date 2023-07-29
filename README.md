@@ -40,15 +40,15 @@ Uses the default Django development server.
 
 3. Create migrations and apply them into database. NOTE the containers must be running: 
 
-    `$ docker-compose exec web python manage.py makemigrations`
-    `$ docker-compose exec web python manage.py migrate`
+    `$ docker-compose exec api python manage.py makemigrations`
+    `$ docker-compose exec api python manage.py migrate`
 
 
 4. Test it out at http://0.0.0.0:8000. The "app" folder is mounted into the container and your code changes apply automatically.
 
 #### Running Tests in Development 
 
-`$ docker-compose exec web python manage.py test`
+`$ docker-compose exec api python manage.py test`
     
 NOTE: Before you execute the command above. The containers must me up an running.
 
